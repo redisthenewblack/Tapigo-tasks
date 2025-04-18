@@ -2,10 +2,8 @@ name: Deploy Vue App to GitHub Pages
 
 on:
   push:
-    branches: ["main"]  # Измените на вашу основную ветку
 
 permissions:
-  contents: read
   pages: write
   id-token: write
 
@@ -35,7 +33,6 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist  # Путь к собранному проекту
 
   deploy:
     environment:
