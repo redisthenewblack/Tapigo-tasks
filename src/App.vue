@@ -10,9 +10,25 @@ import { RouterView } from 'vue-router'
           <div class="p-8">
             <h1 class="mb-12 text-center text-3xl font-bold text-gray-900">✨ Tasks</h1>
             <RouterView />
+            <div class="test visually-hidden"></div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<style scoped>
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+</style>
