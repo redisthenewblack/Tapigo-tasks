@@ -2,8 +2,8 @@ name: Deploy Vue App to GitHub Pages
 
 on:
   push:
-    branches: ["master"] # Проверьте название вашей основной ветки
-  workflow_dispatch: # Добавьте для ручного запуска
+    branches: ["master"] 
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -25,7 +25,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: "pnpm" # Убедитесь, что используете pnpm в проекте
+          cache: 'pnpm'
+
+      - name: Install pnpm
+        run: npm install -g pnpm@latest
 
       - name: Install dependencies
         run: pnpm install
@@ -36,7 +39,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist # Убедитесь, что папка dist существует после сборки
+          path: ./dist
 
   deploy:
     environment:
@@ -46,4 +49,8 @@ jobs:
     needs: build
     steps:
       - name: Setup Pages
-        uses: actions/configure-pages@v5 # Обязательный
+        uses: actions/configure-pages@v5
+      
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
